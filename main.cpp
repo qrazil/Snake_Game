@@ -13,9 +13,17 @@ class point{
         void point(int x_init,int y_init) : x(x_init), y(y_init) {x=0; y=0;}
 }
 
+enum direction{
+    up;
+    down;
+    left;
+    right;
+}
+
 class snake{
     point head {};
     int tail_x, tail_y;
+    direction move = right;
 }
 // coordinates
 int scr_x, scr_y;
@@ -52,12 +60,14 @@ void draw{
 int main() {
     initscr();
     getmaxyx(stdscr,scr_y,scr_x);
+    if(scr_y < 10 && scr_x < 10)
     while (!game_over)
     {
         draw();
         refresh();
         userInput();
-        snake_login();
+        snake_move();
+        game_state();
         Sleep(10); // control the speed of the game - milliseconds
     }
     endwin();
