@@ -9,30 +9,8 @@ int score = 0;
 
 // coordinates
 int snake_x, snake_y;
-int snake_tail_x[100], snake_tail_y[100];
+int snake_size=3;
 int fruit_x, fruit_y;
-
-enum DIRECTION
-{
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    STOP = 0
-};
-
-DIRECTION currentDirection;
-
-void initializeGame()
-{
-    currentDirection = STOP;
-
-}
-
-void draw()
-{
-
-}
 
 void userInput()
 {
@@ -58,12 +36,9 @@ void userInput()
         }
     }
 }
-
-void snakeLogic()
-{
-
+void draw{
+    
 }
-
 
 
 int main() {
