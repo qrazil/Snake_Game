@@ -1,21 +1,30 @@
 #include <iostream>
-#include <conio.h> // console I/O - kbhit()
-#include <windows.h> // Sleep() function
+#include <ncurses.h>
+
 
 using namespace std;
 
 bool game_over = false;
 int score = 0;
 
+class point{
+    int x,y;
+    public:
+        void point(int x_init,int y_init) : x(x_init), y(y_init) {x=0; y=0;}
+}
+
+class snake{
+    point head {};
+    int tail_x, tail_y;
+}
 // coordinates
-int snake_x, snake_y;
+int scr_x, scr_y;
+
 int snake_size=3;
 int fruit_x, fruit_y;
 
 void userInput()
 {
-    if(kbhit()) // Check if a key has been pressed on the keyboard without needing to continuously hold down the directional buttons
-    {
         switch(getch()) // Get character
         {
             case 'a':
@@ -34,7 +43,6 @@ void userInput()
                 game_over = true;
                 break;
         }
-    }
 }
 void draw{
     
@@ -42,15 +50,16 @@ void draw{
 
 
 int main() {
-
-    initializeGame();
-
+    initscr();
+    getmaxyx(stdscr,scr_y,scr_x);
     while (!game_over)
     {
         draw();
+        refresh();
         userInput();
-        snakeLogic();
+        snake_login();
         Sleep(10); // control the speed of the game - milliseconds
     }
+    endwin();
     return 0;
 }
